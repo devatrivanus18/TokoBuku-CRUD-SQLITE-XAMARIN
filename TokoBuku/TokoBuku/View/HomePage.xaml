@@ -6,6 +6,7 @@
              NavigationPage.HasNavigationBar="True"
              NavigationPage.HasBackButton="False" 
              Title="LIST BUKU"
+             x:Name="HomePageData"
              x:Class="TokoBuku.View.HomePage">
 
     <ContentPage.ToolbarItems>
@@ -34,6 +35,20 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout>
+                                <SwipeView>
+                                    <SwipeView.RightItems>
+                                        <SwipeItems>
+                                            <SwipeItem Text="Delete"
+                                                       Command="{Binding Source={RelativeSource AncestorType={x:Type vm:BukuViewModel}}, Path=DeleteCommand}"
+                                                       CommandParameter="{Binding}"
+                                                       BackgroundColor="Red"/>
+                                            <SwipeItem  IsDestructive="True"
+                                                        Text="Close"
+                                                        BackgroundColor="Green"/>
+
+                                        </SwipeItems>
+                                    </SwipeView.RightItems>
+                                
                                 <Frame 
                              BorderColor="WhiteSmoke"
                              CornerRadius="5"
@@ -92,6 +107,7 @@
                                                 Text="Price"/>
                                     </Grid>
                                 </Frame>
+                                </SwipeView>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

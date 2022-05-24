@@ -18,6 +18,7 @@ namespace TokoBuku.ViewModel
         IServiceBuku bukuService;
         public ICommand AddCommand { get; set; }
         public ICommand SaveCommand { get; set; }
+        public ICommand DeleteCommand { get; set; }
         public ICommand PindahHalamanTambahCommand { get; set; }
 
         public ICommand ItemSelectedCommand { get; set; }
@@ -29,7 +30,15 @@ namespace TokoBuku.ViewModel
             ItemSelectedCommand = new Command<object>(BukuSelected);
             PindahHalamanTambahCommand = new Command<object>(PindahHalamanTambah);
             SaveCommand = new Command<object>(SaveBuku);
+            DeleteCommand = new Command<object>(DeleteData);
             ListBuku = bukuService.ListBuku;
+        }
+
+        private void DeleteData(object obj)
+        {
+            var data = obj as Buku;
+            bukuService.DeleteBukuAsync(data);
+            bukuService.ListBuku.Remove(data);
         }
 
         private void SaveBuku(object obj)
