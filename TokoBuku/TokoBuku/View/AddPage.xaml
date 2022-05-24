@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:TokoBuku.ViewModel"
+             Title="ADD BUKU"
+             x:Class="TokoBuku.View.AddPage">
+    <ContentPage.BindingContext>
+        <vm:BukuViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+                <StackLayout>
+                    <Frame Margin="10" Padding="0,10,0,10">                    
+                        <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="4*"/>
+                        </Grid.ColumnDefinitions>
+                            <Label Margin="10,17,0,0" Text="Title" Grid.Row="0" Grid.Column="0"/>
+                            <Label Margin="10,17,0,0" Text="Author" Grid.Row="1" Grid.Column="0"/>
+                            <Label Margin="10,17,0,0" Text="Price" Grid.Row="2" Grid.Column="0"/>
+                            <Label Margin="10,17,0,0" Text="Publisher" Grid.Row="3" Grid.Column="0"/>
+                            <Label Margin="10,17,0,0" Text="ISBN" Grid.Row="4" Grid.Column="0"/>
+                            <Label Margin="10,17,0,0" Text="Date" Grid.Row="5" Grid.Column="0"/>
+                            <Entry Grid.Column="1" Grid.Row="0" Placeholder="Input Titel..." Text="{Binding buku.Title}"/>
+                            <Entry Grid.Column="1" Grid.Row="1" Placeholder="Input Author..." Text="{Binding buku.Author}"/>
+                            <Entry Grid.Column="1" Grid.Row="2" Placeholder="Input Price..." Text="{Binding buku.Price}"/>
+                            <Entry Grid.Column="1" Grid.Row="3" Placeholder="Input Publisher..." Text="{Binding buku.Publisher}"/>
+                            <Entry Grid.Column="1" Grid.Row="4" Placeholder="Input ISBN..." Text="{Binding buku.ISBN}"/>
+                            <DatePicker Grid.Column="1" Grid.Row="5" Date="{Binding buku.Date}"/>
+                            <Button 
+                                Grid.Column="1" 
+                                Grid.Row="6"
+                                WidthRequest="70" 
+                                BackgroundColor="WhiteSmoke" 
+                                HorizontalOptions="Start" 
+                                BorderWidth="50" 
+                                FontSize="12" 
+                                CornerRadius="10" 
+                                HeightRequest="50" Text="save" 
+                                Command="{Binding SaveCommand}"/>
+                    </Grid>
+                    </Frame>
+                </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:TokoBuku.ViewModel"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#ededf5"
+             x:Class="TokoBuku.View.LoginPage">
+
+    <ContentPage.BindingContext>
+        <vm:LoginViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Frame CornerRadius="15"
+               WidthRequest="300"
+               HeightRequest="400"
+               HasShadow="True"
+               BorderColor="WhiteSmoke"
+               HorizontalOptions="Center"
+               VerticalOptions="Center">
+            <StackLayout Margin="0,0,0,0">
+                <Image Source="logo"
+                       WidthRequest="200"/>
+                <Entry CharacterSpacing="2" Text="{Binding Username}" Placeholder="email..."/>
+                <Entry Text="{Binding Password}" IsPassword="True" Placeholder="password..."/>
+                <Button CornerRadius="15" BackgroundColor="#b5ae9a" Text="Login" Command="{Binding LoginCommand}"/>
+                <Button FontSize="15" Text="Register" BackgroundColor="Transparent"/>
+            </StackLayout>
+        </Frame>
+    </ContentPage.Content>
+</ContentPage>

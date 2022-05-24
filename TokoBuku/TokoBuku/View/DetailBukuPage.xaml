@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:TokoBuku.ViewModel"
+             Title="Detail BUKU"
+             x:Class="TokoBuku.View.DetailBukuPage">
+
+    <ContentPage.BindingContext>
+        <vm:DetailViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame BorderColor="WhiteSmoke" CornerRadius="20" Margin="10">
+                <StackLayout>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="4*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Margin="10,17,0,0" Grid.Column="0" Grid.Row="0" Text="Title" />
+                        <Label Margin="10,17,0,0" Grid.Column="0" Grid.Row="1" Text="Author" />
+                        <Label Margin="10,17,0,0" Grid.Column="0" Grid.Row="2" Text="Price" />
+                        <Label Margin="10,17,0,0" Grid.Column="0" Grid.Row="3" Text="Publisher" />
+                        <Label Margin="10,17,0,0" Grid.Column="0" Grid.Row="4" Text="ISBN" />
+                        <Label Margin="10,17,0,0" Grid.Column="0" Grid.Row="5" Text="Date" />
+                        <Entry Grid.Column="1" Grid.Row="0" Text="{Binding BukuTerpilih.Title}"/>
+                        <Entry Grid.Column="1" Grid.Row="1" Text="{Binding BukuTerpilih.Author}"/>
+                        <Entry Grid.Column="1" Grid.Row="2" Text="{Binding BukuTerpilih.Price}"/>
+                        <Entry Grid.Column="1" Grid.Row="3" Text="{Binding BukuTerpilih.Publisher}"/>
+                        <Entry Grid.Column="1" Grid.Row="4" Text="{Binding BukuTerpilih.ISBN}"/>
+                        <DatePicker Grid.Column="1" Grid.Row="5" Date="{Binding BukuTerpilih.Date}"/>
+                        <Button Grid.Column="0" HorizontalOptions="Center" WidthRequest="100" Grid.Row="6" BackgroundColor="#f0e2e1" CornerRadius="10" Text="Delete" Command="{Binding DeleteCommand}"/>
+                        <Button Grid.Column="1" HorizontalOptions="Start" WidthRequest="100" Grid.Row="6" BackgroundColor="#eff0e1" CornerRadius="10" Text="Update" Command="{Binding UpdateCommand}"/>
+
+                    </Grid>
+                </StackLayout>
+            </Frame>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

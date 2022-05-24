@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:vm="clr-namespace:TokoBuku.ViewModel"
+             NavigationPage.HasNavigationBar="True"
+             NavigationPage.HasBackButton="False" 
+             Title="LIST BUKU"
+             x:Class="TokoBuku.View.HomePage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding PindahHalamanTambahCommand}" Text="ADD"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <xct:ItemSelectedEventArgsConverter x:Key="ItemSelectedEventArgsConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.BindingContext>
+        <vm:BukuViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView
+                SelectionMode="Single"
+                HasUnevenRows="True" 
+                ItemsSource="{Binding ListBuku}">
+                <ListView.Behaviors>
+                    <xct:EventToCommandBehavior EventName="ItemSelected"
+                                              Command="{Binding ItemSelectedCommand}"
+                                              EventArgsConverter="{StaticResource ItemSelectedEventArgsConverter}" />
+                </ListView.Behaviors>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Frame 
+                             BorderColor="WhiteSmoke"
+                             CornerRadius="5"
+                            BackgroundColor="White"
+                            HasShadow="True"
+                             Padding="10"
+                            Margin="10">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="1*" />
+                                            <ColumnDefinition Width="3*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Image  Grid.Column="0"
+                                                Grid.RowSpan="4"
+                                                Source="https://www.pngall.com/wp-content/uploads/2016/04/Note-PNG-Image.png" 
+                                                Aspect="AspectFit"
+                                                HorizontalOptions="Start"
+                                                VerticalOptions="Center"
+                                                HeightRequest="400" 
+                                                WidthRequest="400" />    
+                                        <Label  Grid.Column="2"
+                                                Text="{Binding Title}" 
+                                                FontAttributes="Bold"
+                                                LineBreakMode="TailTruncation" />
+                                        <Label  Grid.Column="2"
+                                                Grid.Row="1"
+                                                Text="{Binding Date}"
+                                                LineBreakMode="TailTruncation"
+                                                FontAttributes="Italic" 
+                                                VerticalOptions="End" />
+                                        <Label  Grid.Column="2"
+                                                Grid.Row="2"
+                                                Text="{Binding Author}"
+                                                LineBreakMode="TailTruncation"
+                                                FontAttributes="Italic" 
+                                                VerticalOptions="End" />
+                                        <Label  Grid.Column="2"
+                                                Grid.Row="3"
+                                                Text="{Binding Price}"
+                                                LineBreakMode="TailTruncation"
+                                                FontAttributes="Italic" 
+                                                VerticalOptions="End" />
+
+                                        <Label  Grid.Column="1"
+                                                Grid.Row="0"
+                                                Text="Title"/>
+                                        <Label  Grid.Column="1"
+                                                Grid.Row="1"
+                                                Text="Date"/>
+                                        <Label  Grid.Column="1"
+                                                Grid.Row="2"
+                                                Text="Author"/>
+                                        <Label  Grid.Column="1"
+                                                Grid.Row="3"
+                                                Text="Price"/>
+                                    </Grid>
+                                </Frame>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
