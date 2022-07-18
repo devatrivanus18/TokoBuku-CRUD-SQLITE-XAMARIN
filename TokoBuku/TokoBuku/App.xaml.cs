@@ -2,6 +2,7 @@
 using System.IO;
 using TokoBuku.Service;
 using TokoBuku.View;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace TokoBuku
@@ -12,8 +13,15 @@ namespace TokoBuku
         public App()
         {
             InitializeComponent();
-
-            MainPage = new NavigationPage(new HomePage());
+            if (Preferences.Get("user",null) ==null)
+            {
+                MainPage = new NavigationPage(new LoginPage());
+            }
+            else
+            {
+                MainPage = new NavigationPage(new HomePage());
+            }
+           
         }
 
         protected override void OnStart()

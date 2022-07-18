@@ -10,7 +10,8 @@
              x:Class="TokoBuku.View.HomePage">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Command="{Binding PindahHalamanTambahCommand}" Text="ADD"/>
+        <ToolbarItem xct:ShadowEffect.Color="red" Command="{Binding PindahHalamanTambahCommand}" IconImageSource="add"/>
+        <ToolbarItem Command="{Binding LogOutCommand}" Text="Logout"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -38,75 +39,81 @@
                                 <SwipeView>
                                     <SwipeView.RightItems>
                                         <SwipeItems>
-                                            <SwipeItem Text="Delete"
+                                            <SwipeItem
+                                                       IconImageSource="trash"
                                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:BukuViewModel}}, Path=DeleteCommand}"
                                                        CommandParameter="{Binding}"
-                                                       BackgroundColor="Red"/>
+                                                       BackgroundColor="WhiteSmoke"/>
+                                            <SwipeItem
+                                                       IconImageSource="edit"
+                                                       Command="{Binding Source={RelativeSource AncestorType={x:Type vm:BukuViewModel}}, Path=ItemSelectedCommand}"
+                                                       CommandParameter="{Binding}"
+                                                       BackgroundColor="WhiteSmoke"/>
                                             <SwipeItem  IsDestructive="True"
-                                                        Text="Close"
-                                                        BackgroundColor="Green"/>
-
+                                                        IconImageSource="close"
+                                                        xct:ShadowEffect.Radius="15"
+                                                        xct:TouchEffect.HoveredScale="50"
+                                                        BackgroundColor="WhiteSmoke"/>
                                         </SwipeItems>
                                     </SwipeView.RightItems>
-                                
-                                <Frame 
+                                    <Frame 
                              BorderColor="WhiteSmoke"
                              CornerRadius="5"
                             BackgroundColor="White"
                             HasShadow="True"
                              Padding="10"
                             Margin="10">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="1*" />
-                                            <ColumnDefinition Width="3*" />
-                                        </Grid.ColumnDefinitions>
-                                        <Image  Grid.Column="0"
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="1*" />
+                                                <ColumnDefinition Width="3*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Image  Grid.Column="0"
                                                 Grid.RowSpan="4"
-                                                Source="https://www.pngall.com/wp-content/uploads/2016/04/Note-PNG-Image.png" 
+                                                Source="Book" 
                                                 Aspect="AspectFit"
                                                 HorizontalOptions="Start"
                                                 VerticalOptions="Center"
                                                 HeightRequest="400" 
-                                                WidthRequest="400" />    
-                                        <Label  Grid.Column="2"
+                                                WidthRequest="400" />
+                                            <Label  Grid.Column="2"
                                                 Text="{Binding Title}" 
                                                 FontAttributes="Bold"
                                                 LineBreakMode="TailTruncation" />
-                                        <Label  Grid.Column="2"
+                                            <Label  Grid.Column="2"
                                                 Grid.Row="1"
                                                 Text="{Binding Date}"
                                                 LineBreakMode="TailTruncation"
                                                 FontAttributes="Italic" 
                                                 VerticalOptions="End" />
-                                        <Label  Grid.Column="2"
+                                            <Label  Grid.Column="2"
                                                 Grid.Row="2"
                                                 Text="{Binding Author}"
                                                 LineBreakMode="TailTruncation"
                                                 FontAttributes="Italic" 
                                                 VerticalOptions="End" />
-                                        <Label  Grid.Column="2"
+                                            <Label  Grid.Column="2"
                                                 Grid.Row="3"
-                                                Text="{Binding Price}"
+                                                Text="{Binding Price, StringFormat='{0:C}'}"
                                                 LineBreakMode="TailTruncation"
                                                 FontAttributes="Italic" 
-                                                VerticalOptions="End" />
+                                                VerticalOptions="End"/>
 
-                                        <Label  Grid.Column="1"
+                                            <Label  Grid.Column="1"
                                                 Grid.Row="0"
                                                 Text="Title"/>
-                                        <Label  Grid.Column="1"
+                                            <Label  Grid.Column="1"
                                                 Grid.Row="1"
                                                 Text="Date"/>
-                                        <Label  Grid.Column="1"
+                                            <Label  Grid.Column="1"
                                                 Grid.Row="2"
                                                 Text="Author"/>
-                                        <Label  Grid.Column="1"
+                                            <Label  Grid.Column="1"
                                                 Grid.Row="3"
                                                 Text="Price"/>
-                                    </Grid>
-                                </Frame>
+                                        </Grid>
+                                    </Frame>
                                 </SwipeView>
                             </StackLayout>
                         </ViewCell>

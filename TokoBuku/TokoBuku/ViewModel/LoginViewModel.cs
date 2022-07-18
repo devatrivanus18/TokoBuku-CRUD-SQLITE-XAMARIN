@@ -23,6 +23,8 @@ namespace TokoBuku.ViewModel
 
         public LoginViewModel()
         {
+            Username = "";
+            Password = "";
             loginService = DependencyService.Get<ILoginService>();
             LoginCommand = new AsyncCommand(LoginMethod);
         }

@@ -5,6 +5,7 @@ using System.Windows.Input;
 using TokoBuku.Model;
 using TokoBuku.Service;
 using TokoBuku.View;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace TokoBuku.ViewModel
@@ -19,6 +20,7 @@ namespace TokoBuku.ViewModel
         public ICommand AddCommand { get; set; }
         public ICommand SaveCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
+        public ICommand LogOutCommand { get; set; }
         public ICommand PindahHalamanTambahCommand { get; set; }
 
         public ICommand ItemSelectedCommand { get; set; }
@@ -31,7 +33,14 @@ namespace TokoBuku.ViewModel
             PindahHalamanTambahCommand = new Command<object>(PindahHalamanTambah);
             SaveCommand = new Command<object>(SaveBuku);
             DeleteCommand = new Command<object>(DeleteData);
+            LogOutCommand = new Command<object>(LogOut);
             ListBuku = bukuService.ListBuku;
+        }
+
+        private void LogOut(object obj)
+        {
+            Application.Current.MainPage.Navigation.PopAsync();
+            Preferences.Set("user", null);
         }
 
         private void DeleteData(object obj)

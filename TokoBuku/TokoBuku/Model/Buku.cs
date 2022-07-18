@@ -12,10 +12,10 @@ namespace TokoBuku.Model
         public int ID { get; set; }
         public string Title { get; set; }
         public string Author { get; set; }
-        public double Price { get; set; }
+        public double Price { get; set; } 
         public string Publisher { get; set; }
         public double ISBN { get; set; }
-        public DateTime Date { get; set; }
+        public DateTimeOffset Date { get; set; } = DateTimeOffset.Now;
 
     }
 }

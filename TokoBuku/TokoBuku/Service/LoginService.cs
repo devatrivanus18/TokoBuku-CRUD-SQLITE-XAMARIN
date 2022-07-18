@@ -26,6 +26,7 @@ namespace TokoBuku.Service
         {
             users.Add(new User { username="deva",password="deva"});
             users.Add(new User { username = "admin", password = "admin" });
+           
         }
 
         public async void Login(User user)
@@ -37,6 +38,7 @@ namespace TokoBuku.Service
                 {
                     await Application.Current.MainPage.DisplayAlert("Sukses", "berhasil login", "OK");
                     Preferences.Set("Username", user.username);
+                    Preferences.Set("user", data.username);
                     await Application.Current.MainPage.Navigation.PushAsync(new HomePage());
                 }
                 else
